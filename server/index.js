@@ -13,7 +13,8 @@ app.use((req, res, next) => {
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
-  next()
+  res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
+  next();
 });
 const Bicycle = require("./bicycles_mode");
 const mongoUrl = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PWD}@${process.env.MONGO_HOST}/${process.env.MONGO_DB_NAME}?retryWrites=true&w=majority`;
@@ -56,25 +57,46 @@ app.get("/:id", (req, res) => {
     });
 });
 
-app.post("/", (req, res) => {
+app.post("/", async (req, res) => {
   const bicycle = new Bicycle({
     // cделать проверку
     _id: new mongoose.Types.ObjectId(),
     name: req.body.name,
     price: req.body.price,
     type: req.body.type,
+    available: req.body.available,
   });
   console.log("crcr");
   bicycle
     .save()
     .then(() => {
-      res.status(201).json("created");
+      res.status(200).json("saved");
       console.log("created");
     })
     .catch((e) => {
       res.status(500).json(e);
-      console.log("error");
+      console.log("error", e);
     });
+});
+
+app.put("/", async (req, res) => {
+  if (req.body._id) {
+    const bicycle = await Bicycle.findOneAndUpdate(
+      { _id: req.body._id },
+      {
+        // cделать проверку
+        _id: req.body._id,
+        name: req.body.name,
+        price: req.body.price,
+        type: req.body.type,
+        available: req.body.available,
+      },
+      (error) => {
+        if (error) return res.status(500);
+        return res.status(200);
+      }
+    );
+  }
 });
 
 app.delete("/:id", (req, res) => {

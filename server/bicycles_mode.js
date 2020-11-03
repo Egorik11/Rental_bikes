@@ -4,5 +4,6 @@ const bicyclesSchema = mongoose.Schema({
   name: { type: String, required: true },
   price: { type: Number },
   type: { type: String },
+  available: { type: Boolean },
 });
-module.exports = mongoose.model("Bike_rental", bicyclesSchema)
+module.exports = mongoose.model("Bike_rental", bicyclesSchema);

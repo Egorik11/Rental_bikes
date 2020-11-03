@@ -1,38 +1,71 @@
+.wrapper_app {
+  width: 100%;
+  background-color: #f5f5f5;
+}
 .App {
-  text-align: center;
+  margin: auto;
+  width: 900px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.form_create {
+  display: inline-flex;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.input {
+  width: 50px;
+  height: 25px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.create_rent {
+  background-color: #e8eaee;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 10px 0 10px 0;
+}
+.div_input {
+  margin-right: 40px;
+}
+.input {
+  width: 200px;
+  height: 35x;
+}
+.select {
+  height: 31px;
+}
+.button {
+  width: 120px;
+  height: 40px;
+  border-radius: 4px;
+  color: #ffffff;
+  margin-top: 14px;
+}
+.green {
+  background-color: #22ba99;
+}
+.red {
+  background-color: #f4313d;
+  margin-left: 20px;
+}
+.blue {
+  background-color: #3650c8;
+}
+.input {
+  border-radius: 4px;
+}
+.available {
+  padding-bottom: 15px;
+}
+.your_rent,
+.available {
+  width: 100%;
+}
+.rented_bike,
+.available_bike {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 25px 0 25px;
+  background-color: #ffffff;
+  margin-top: 14px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.rented_bike p,
+.available_bike p {
+  font-size: 20px;
 }
